@@ -5,4 +5,6 @@ services:
     extends:
       file: docker-compose.yml
       service: app
-    # command: npm test
+    volumes:
+      - ./app:/app
+    command: npm run dev
