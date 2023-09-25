@@ -1,0 +1,8 @@
+version: "3.9"
+
+services:
+  app:
+    extends:
+      file: docker-compose.yml
+      service: app
+    # command: npm test
