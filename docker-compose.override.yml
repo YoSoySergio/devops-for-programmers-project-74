@@ -1,6 +1,16 @@
 version: "3.9"
 
 services:
+  caddy:
+    image: caddy:2.7.4-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./services/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./app:/srv
+
   app:
     extends:
       file: docker-compose.yml
@@ -8,3 +18,5 @@ services:
     volumes:
       - ./app:/app
     command: npm run dev
+    depends_on:
+      - caddy
