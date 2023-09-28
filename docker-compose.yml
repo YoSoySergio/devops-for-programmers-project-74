@@ -1,10 +1,22 @@
 version: "3.9"
 
 services:
+  db:
+    image: postgres:16.0-alpine3.18
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
   app:
     build:
       context: .
       dockerfile: Dockerfile.production
     image: synthez/devops-for-programmers-project-74
-
     command: npm test
+    depends_on:
+      - db
+
+volumes:
+  db-data:

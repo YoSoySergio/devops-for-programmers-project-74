@@ -17,6 +17,9 @@ services:
       service: app
     volumes:
       - ./app:/app
-    command: npm run dev
+    ports:
+      - 8080:8080
+    command: bash -c 'sleep 3 && npm start'
     depends_on:
       - caddy
+      - db
