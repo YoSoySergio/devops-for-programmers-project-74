@@ -1,4 +1,4 @@
-version: "3.9"
+version: "3.8"
 
 services:
   caddy:
@@ -10,16 +10,18 @@ services:
     volumes:
       - ./services/caddy/Caddyfile:/etc/caddy/Caddyfile
       - ./app:/srv
+    depends_on:
+      - app
 
   app:
-    extends:
-      file: docker-compose.yml
-      service: app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: synthez/devops-for-programmers-project-74
     volumes:
       - ./app:/app
     ports:
       - 8080:8080
     command: bash -c 'sleep 3 && npm start'
     depends_on:
-      - caddy
       - db
