@@ -1,3 +1,6 @@
+setup:
+	docker-compose run --rm app npm ci
+
 dev:
 	$(MAKE) prepare-env
 	docker-compose up --abort-on-container-exit --exit-code-from app
