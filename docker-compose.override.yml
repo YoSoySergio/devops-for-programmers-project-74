@@ -17,7 +17,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: synthez/devops-for-programmers-project-74
+    image: app:local
     volumes:
       - ./app:/app
     ports:

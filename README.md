@@ -16,3 +16,7 @@
 ### Run Tests
 
 1. `make ci`
+
+### Docker Image
+
+1. [Docker Hub Image](https://hub.docker.com/repository/docker/synthez/devops-for-programmers-project-74)
